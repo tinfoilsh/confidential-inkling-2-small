@@ -2,10 +2,18 @@
 # Runs ON THE GUEST TOOLBOX. Kimi-lab engine replacement discipline:
 # graceful stop (60s), retain old container, wait for GPU contexts to retire
 # (120s gate), then start the experimental engine with restart=no.
-# Usage: switch-engine.sh <new-name> <extra-vllm-args...>
+# Usage: switch-engine.sh <new-name> [mode: plain|dspark1|dspark3|dspark5]
 set -eu
 NEW=${1:?new engine container name}
-shift
+MODE=${2:-plain}
+SPEC=""
+case "$MODE" in
+  plain) SPEC="" ;;
+  dspark1) SPEC="--speculative-config \"{\\\"method\\\":\\\"dspark\\\",\\\"num_speculative_tokens\\\":1}\"" ;;
+  dspark3) SPEC="--speculative-config \"{\\\"method\\\":\\\"dspark\\\",\\\"num_speculative_tokens\\\":3}\"" ;;
+  dspark5) SPEC="--speculative-config \"{\\\"method\\\":\\\"dspark\\\",\\\"num_speculative_tokens\\\":5}\"" ;;
+  *) echo "unknown mode $MODE"; exit 1 ;;
+esac
 CURRENT=""
 for c in inkling-2-small $(docker ps --format '{{.Names}}' | grep -v toolbox); do
   if docker inspect "$c" >/dev/null 2>&1 && [ "$(docker inspect -f '{{.State.Running}}' "$c")" = "true" ]; then
@@ -52,5 +60,5 @@ eval docker run -d --name "$NEW" \
   --enable-auto-tool-choice --enable-prompt-tokens-details --enable-force-include-usage \
   --served-model-name inkling-2-small --scheduling-policy priority \
   --load-format runai_streamer --disable-custom-all-reduce \
-  --no-enable-flashinfer-autotune --port 8001 "$@"
+  --no-enable-flashinfer-autotune --port 8001 $SPEC
 echo "started $NEW"
