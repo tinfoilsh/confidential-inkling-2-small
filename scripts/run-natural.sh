@@ -17,7 +17,8 @@ $SSH "cat /tmp/inkling-natural.tgz | docker exec -i inkling-2-small sh -c 'mkdir
 $SSH "docker exec inkling-2-small python3 /root/lab/natural/run_natural.py \
       --base-url http://127.0.0.1:18001 \
       --model inkling-2-small --tokenizer $TOK \
-      --variant $VARIANT --natural-kind short \
+      --variant $VARIANT --natural-kind oracle \
+      --server-id inkling-debug-inf29 --cc-mode on \
       --dataset-path /root/lab/natural/$CORPUS \
       --out-dir /root/lab/$RUN"
 $SSH "docker exec inkling-2-small tar czf - -C /root/lab $RUN" > /tmp/$RUN.tgz
