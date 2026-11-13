@@ -13,6 +13,7 @@ case "$MODE" in
   dspark1) SPEC="--speculative-config \"{\\\"method\\\":\\\"dspark\\\",\\\"num_speculative_tokens\\\":1}\"" ;;
   dspark3) SPEC="--speculative-config \"{\\\"method\\\":\\\"dspark\\\",\\\"num_speculative_tokens\\\":3}\"" ;;
   dspark5d) LOADFMT=""; SPEC="--speculative-config \"{\\\"method\\\":\\\"dspark\\\",\\\"num_speculative_tokens\\\":5}\"" ;;
+  dspark7d) LOADFMT=""; SPEC="--speculative-config \"{\\\"method\\\":\\\"dspark\\\",\\\"num_speculative_tokens\\\":7}\"" ;;
   dspark5) SPEC="--speculative-config \"{\\\"method\\\":\\\"dspark\\\",\\\"num_speculative_tokens\\\":5}\"" ;;
   *) echo "unknown mode $MODE"; exit 1 ;;
 esac
@@ -37,7 +38,7 @@ fi
 echo "== GPU retirement gate (120s)"
 DEADLINE=$(( $(date +%s) + 120 ))
 while :; do
-  ACTIVE=$(docker run --rm --runtime nvidia --gpus all --network none \
+  ACTIVE=$(timeout 40 docker run --rm --runtime nvidia --gpus all --network none \
     --entrypoint nvidia-smi "$IMG" --query-compute-apps=pid --format=csv,noheader,nounits 2>/dev/null || echo probe-failed)
   [ -z "$ACTIVE" ] && break
   [ "$(date +%s)" -ge "$DEADLINE" ] && { echo "GPU contexts remain: $ACTIVE; no replacement started"; exit 1; }
