@@ -14,6 +14,8 @@ containers:
     image: "ghcr.io/tinfoilsh/confidential-inkling-2-small@sha256:0000000000000000000000000000000000000000000000000000000000000000"
     runtime: nvidia
     gpus: all
+    # Lab phase: writable rootfs for in-enclave iteration; remove before prod.
+    read_only: false
     restart: always
     shm_size: 384g
     env:
