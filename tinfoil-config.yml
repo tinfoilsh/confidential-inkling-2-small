@@ -11,7 +11,7 @@ models:
 
 containers:
   - name: "inkling-2-small"
-    image: "ghcr.io/tinfoilsh/confidential-inkling-2-small@sha256:0000000000000000000000000000000000000000000000000000000000000000"
+    image: "ghcr.io/tinfoilsh/confidential-inkling-2-small@sha256:1fa4bc8d6e8feaaed2a38eb5bd6b15edc2b104bcb11cf52db708eb96dafe2fad" # v0.0.2
     runtime: nvidia
     gpus: all
     restart: always
