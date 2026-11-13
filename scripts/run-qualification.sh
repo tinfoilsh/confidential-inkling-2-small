@@ -7,10 +7,10 @@ RUN=${2:-run-$(date +%Y%m%d-%H%M%S)}
 HERE=$(cd "$(dirname "$0")" && pwd)
 SSH="ssh -o BatchMode=yes -o ClearAllForwardings=yes -o StrictHostKeyChecking=accept-new -p $PORT root@inf29.tinfoil.sh"
 
-tar -C "$HERE" -czf /tmp/inkling-lab-scripts.tgz qualify-api.py capture-baseline.py fixtures
+COPYFILE_DISABLE=1 tar -C "$HERE" --exclude '._*' -czf /tmp/inkling-lab-scripts.tgz qualify-api.py capture-baseline.py fixtures
 scp -q -o ClearAllForwardings=yes -P "$PORT" /tmp/inkling-lab-scripts.tgz root@inf29.tinfoil.sh:/tmp/
 # /root is tmpfs: docker cp cannot see it, so stream tars through docker exec -i
-$SSH "cat /tmp/inkling-lab-scripts.tgz | docker exec -i inkling-2-small sh -c 'mkdir -p /root/lab && tar xzf - -C /root/lab'"
+$SSH "cat /tmp/inkling-lab-scripts.tgz | docker exec -i inkling-2-small sh -c 'mkdir -p /root/lab && tar xzf - -C /root/lab --no-same-owner'"
 
 $SSH "docker logs inkling-2-small 2>&1 | grep -v 'proxy error' | \
       docker exec -i inkling-2-small sh -c 'cat > /root/lab/engine.log' && \
