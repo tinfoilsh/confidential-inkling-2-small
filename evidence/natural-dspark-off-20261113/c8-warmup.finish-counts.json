@@ -1,0 +1,10 @@
+{
+  "expected_reason": "stop",
+  "deltas": {
+    "stop": 8.0,
+    "length": 0.0,
+    "abort": 0.0,
+    "error": 0.0,
+    "repetition": 0.0
+  }
+}

@@ -28,8 +28,8 @@ echo "evidence in evidence/$RUN"
 python3 -c "
 import json, pathlib
 d = pathlib.Path('$ROOT/evidence/$RUN')
-r = json.loads((d/'receipt.json').read_text())
+r = json.loads((d/'summary.json').read_text())
 print('status:', r.get('status'))
-for row in r.get('records', r.get('phases', [])):
+for row in r.get('trials', []):
     print(json.dumps(row)[:200])
 "
