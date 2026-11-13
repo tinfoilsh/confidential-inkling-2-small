@@ -50,6 +50,8 @@ containers:
         "priority",
         "--load-format",
         "runai_streamer",
+        "--ignore-patterns",
+        "mtp.safetensors",
         "--disable-custom-all-reduce",
         "--no-enable-flashinfer-autotune",
         "--port",
