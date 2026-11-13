@@ -7,10 +7,12 @@ set -eu
 NEW=${1:?new engine container name}
 MODE=${2:-plain}
 SPEC=""
+LOADFMT="--load-format runai_streamer"
 case "$MODE" in
   plain) SPEC="" ;;
   dspark1) SPEC="--speculative-config \"{\\\"method\\\":\\\"dspark\\\",\\\"num_speculative_tokens\\\":1}\"" ;;
   dspark3) SPEC="--speculative-config \"{\\\"method\\\":\\\"dspark\\\",\\\"num_speculative_tokens\\\":3}\"" ;;
+  dspark5d) LOADFMT=""; SPEC="--speculative-config \"{\\\"method\\\":\\\"dspark\\\",\\\"num_speculative_tokens\\\":5}\"" ;;
   dspark5) SPEC="--speculative-config \"{\\\"method\\\":\\\"dspark\\\",\\\"num_speculative_tokens\\\":5}\"" ;;
   *) echo "unknown mode $MODE"; exit 1 ;;
 esac
@@ -59,6 +61,6 @@ eval docker run -d --name "$NEW" \
   --max-num-batched-tokens 8192 --reasoning-parser inkling --tool-call-parser inkling \
   --enable-auto-tool-choice --enable-prompt-tokens-details --enable-force-include-usage \
   --served-model-name inkling-2-small --scheduling-policy priority \
-  --load-format runai_streamer --disable-custom-all-reduce \
+  $LOADFMT --disable-custom-all-reduce \
   --no-enable-flashinfer-autotune --port 8001 $SPEC
 echo "started $NEW"
