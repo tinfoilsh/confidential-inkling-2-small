@@ -17,7 +17,7 @@ containers:
     restart: always
     shm_size: 384g
     env:
-      - RUNAI_STREAMER_MEMORY_LIMIT: "2147483648"
+      - RUNAI_STREAMER_MEMORY_LIMIT: "17179869184"
       - RUNAI_STREAMER_CONCURRENCY: "8"
       - VLLM_DISABLE_UVA: "1"
       - VLLM_ALLREDUCE_USE_SYMM_MEM: "0"
