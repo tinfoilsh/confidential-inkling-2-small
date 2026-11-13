@@ -9,21 +9,18 @@ SSH="ssh -o BatchMode=yes -o ClearAllForwardings=yes -o StrictHostKeyChecking=ac
 
 tar -C "$HERE" -czf /tmp/inkling-lab-scripts.tgz qualify-api.py capture-baseline.py fixtures
 scp -q -o ClearAllForwardings=yes -P "$PORT" /tmp/inkling-lab-scripts.tgz root@inf29.tinfoil.sh:/tmp/
-$SSH "docker exec inkling-2-small mkdir -p /root/lab && \
-      docker cp /tmp/inkling-lab-scripts.tgz inkling-2-small:/root/lab/ && \
-      docker exec inkling-2-small sh -c 'cd /root/lab && tar xzf inkling-lab-scripts.tgz'"
+# /root is tmpfs: docker cp cannot see it, so stream tars through docker exec -i
+$SSH "cat /tmp/inkling-lab-scripts.tgz | docker exec -i inkling-2-small sh -c 'mkdir -p /root/lab && tar xzf - -C /root/lab'"
 
-$SSH "docker logs inkling-2-small 2>&1 | grep -v 'proxy error' > /tmp/engine.log && \
-      docker cp /tmp/engine.log inkling-2-small:/root/lab/engine.log && \
+$SSH "docker logs inkling-2-small 2>&1 | grep -v 'proxy error' | \
+      docker exec -i inkling-2-small sh -c 'cat > /root/lab/engine.log' && \
       docker exec inkling-2-small python3 /root/lab/capture-baseline.py /root/lab/$RUN-baseline.json /root/lab/engine.log"
 
 $SSH "docker exec inkling-2-small python3 /root/lab/qualify-api.py \
       --base-url http://localhost:18001 --fixtures /root/lab/fixtures \
       --output /root/lab/$RUN" || true
 
-$SSH "docker cp inkling-2-small:/root/lab/$RUN /tmp/$RUN && \
-      docker cp inkling-2-small:/root/lab/$RUN-baseline.json /tmp/$RUN/baseline.json && \
-      tar -C /tmp -czf /tmp/$RUN.tgz $RUN"
+$SSH "docker exec inkling-2-small sh -c 'cp /root/lab/$RUN-baseline.json /root/lab/$RUN/baseline.json; tar czf - -C /root/lab $RUN' > /tmp/$RUN.tgz"
 scp -q -o ClearAllForwardings=yes -P "$PORT" root@inf29.tinfoil.sh:/tmp/$RUN.tgz /tmp/
 mkdir -p "$HERE/../evidence"
 tar -C "$HERE/../evidence" -xzf /tmp/$RUN.tgz
