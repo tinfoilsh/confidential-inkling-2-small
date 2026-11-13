@@ -1,0 +1,13 @@
+{
+  "model": "inkling-2-small",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Reply exactly INK2_REUSE_OK."
+    }
+  ],
+  "temperature": 0,
+  "seed": 20261113,
+  "max_tokens": 4096,
+  "stream": false
+}

@@ -1,0 +1,62 @@
+{
+  "captured_at": "2026-11-13T20:42:14Z",
+  "models": [
+    {
+      "id": "inkling-2-small",
+      "object": "model",
+      "created": 1794602534,
+      "owned_by": "vllm",
+      "root": "/tinfoil/mpk/mpk-2eb1ad6339674a38f3e9179c2933c16fc52f66d8e8b48047007665d4d48b477f",
+      "parent": null,
+      "max_model_len": 524288,
+      "permission": [
+        {
+          "id": "modelperm-86ca416cdcb69ffc",
+          "object": "model_permission",
+          "created": 1794602534,
+          "allow_create_engine": false,
+          "allow_sampling": true,
+          "allow_logprobs": true,
+          "allow_search_indices": false,
+          "allow_view": true,
+          "allow_fine_tuning": false,
+          "organization": "*",
+          "group": null,
+          "is_blocking": false
+        }
+      ]
+    }
+  ],
+  "gpu_memory": [
+    "0, NVIDIA B300 SXM6 AC, 268772 MiB, 275040 MiB",
+    "1, NVIDIA B300 SXM6 AC, 266645 MiB, 275040 MiB",
+    "2, NVIDIA B300 SXM6 AC, 266645 MiB, 275040 MiB",
+    "3, NVIDIA B300 SXM6 AC, 266645 MiB, 275040 MiB"
+  ],
+  "log_extracts": {
+    "kv_cache": [
+      "(Worker_TP0 pid=362) INFO 11-13 20:26:07 [gpu_worker.py:814] Available KV cache memory: 172.39 GiB",
+      "(EngineCore pid=271) INFO 11-13 20:30:46 [kv_cache_utils.py:1168] GPU KV cache size: 2,949,394 tokens, Maximum concurrency for 524,288 tokens per request: 5.63x"
+    ],
+    "graphs": [
+      "Capturing CUDA graphs (PIECEWISE):  96%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258b| 52/54 [01:30<00:06,  3.29s/it]",
+      "Capturing CUDA graphs (PIECEWISE):  98%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258a| 53/54 [01:30<00:02,  2.37s/it]",
+      "Capturing CUDA graphs (PIECEWISE): 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 54/54 [01:30<00:00,  1.71s/it]",
+      "Capturing CUDA graphs (PIECEWISE): 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 54/54 [01:30<00:00,  1.67s/it]",
+      "Capturing CUDA graphs (FULL):  90%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588 | 19/21 [00:30<00:05,  2.72s/it]",
+      "Capturing CUDA graphs (FULL):  95%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258c| 20/21 [00:30<00:01,  1.95s/it]",
+      "Capturing CUDA graphs (FULL): 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 21/21 [00:30<00:00,  1.40s/it]",
+      "Capturing CUDA graphs (FULL): 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 21/21 [00:30<00:00,  1.45s/it]"
+    ],
+    "weights": [
+      "(Worker_TP1 pid=363) INFO 11-13 20:25:44 [model_runner.py:453] Model loading took 91.55 GiB memory and 107.956988 seconds",
+      "(Worker_TP2 pid=364) INFO 11-13 20:25:44 [model_runner.py:453] Model loading took 91.55 GiB memory and 108.277941 seconds",
+      "(Worker_TP0 pid=362) INFO 11-13 20:25:44 [model_runner.py:453] Model loading took 91.55 GiB memory and 108.334389 seconds",
+      "(Worker_TP3 pid=361) INFO 11-13 20:25:45 [model_runner.py:453] Model loading took 91.55 GiB memory and 108.825837 seconds"
+    ],
+    "init": [
+      "(EngineCore pid=271) INFO 11-13 20:30:54 [core.py:461] init engine (profile, create kv cache, warmup model) took 308.73 s",
+      "INFO:     Application startup complete."
+    ]
+  }
+}

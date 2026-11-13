@@ -1,0 +1,30 @@
+{
+  "id": "chatcmpl-b0835208524c4d0c",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "{\"status\":\"ok\",\"count\":3}",
+        "role": "assistant",
+        "reasoning": "The user asks to return exactly {\"status\":\"ok\",\"count\":3}. This is a simple formatting request. Need output exactly that JSON, no extra text. Ensure exact string. Final should be exactly {\"status\":\"ok\",\"count\":3}. No code fence."
+      }
+    }
+  ],
+  "created": 1794602541,
+  "model": "inkling-2-small",
+  "object": "chat.completion",
+  "system_fingerprint": "vllm-0.1.dev25249+gb974b306f-tp4-18a7af40",
+  "usage": {
+    "completion_tokens": 89,
+    "prompt_tokens": 33,
+    "total_tokens": 122,
+    "completion_tokens_details": {
+      "reasoning_tokens": 67
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "created_cache_tokens": 0
+    }
+  }
+}

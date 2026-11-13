@@ -1,0 +1,33 @@
+{
+  "id": "chatcmpl-af68483aaa94a0d5",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "{\"top_left\":\"red\",\"top_right\":\"blue\",\"bottom_left\":\"green\",\"bottom_right\":\"yellow\"}",
+        "role": "assistant",
+        "reasoning": "The user wants me to identify colors in four quadrants of the image. Looking at the image: top-left is red, top-right is blue, bottom-left is green, bottom-right is yellow. Need return JSON only probably. Ensure valid JSON with keys top_left, top_right, bottom_left, bottom_right. Color names lowercase maybe."
+      }
+    }
+  ],
+  "created": 1794602545,
+  "model": "inkling-2-small",
+  "object": "chat.completion",
+  "system_fingerprint": "vllm-0.1.dev25249+gb974b306f-tp4-18a7af40",
+  "usage": {
+    "completion_tokens": 127,
+    "prompt_tokens": 99,
+    "total_tokens": 226,
+    "completion_tokens_details": {
+      "reasoning_tokens": 79
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "created_cache_tokens": 0,
+      "multimodal_tokens": {
+        "image": 50
+      }
+    }
+  }
+}

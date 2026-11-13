@@ -1,0 +1,294 @@
+{
+  "passed": true,
+  "model": "inkling-2-small",
+  "scope": "Development API correctness; timings are not benchmarks",
+  "source_sha256": "282cc10d4e13232b65e33c38611ac92d3bf270aedc5af94aad37e87a7aaca824",
+  "cases": [
+    {
+      "name": "reasoning-low-False",
+      "passed": true,
+      "usage": {
+        "completion_tokens": 64,
+        "prompt_tokens": 33,
+        "total_tokens": 97,
+        "completion_tokens_details": {
+          "reasoning_tokens": 56
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "completed_response_seconds": 0.871335992000013
+    },
+    {
+      "name": "reasoning-low-True",
+      "passed": true,
+      "first_meaningful_output_seconds": 0.8309227890001694,
+      "usage": {
+        "completion_tokens": 64,
+        "prompt_tokens": 33,
+        "total_tokens": 97,
+        "completion_tokens_details": {
+          "reasoning_tokens": 56
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "completed_response_seconds": 0.8581973580000977
+    },
+    {
+      "name": "reasoning-high-False",
+      "passed": true,
+      "usage": {
+        "completion_tokens": 66,
+        "prompt_tokens": 33,
+        "total_tokens": 99,
+        "completion_tokens_details": {
+          "reasoning_tokens": 58
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "completed_response_seconds": 0.8977990799999134
+    },
+    {
+      "name": "reasoning-high-True",
+      "passed": true,
+      "first_meaningful_output_seconds": 0.8811469750000924,
+      "usage": {
+        "completion_tokens": 66,
+        "prompt_tokens": 33,
+        "total_tokens": 99,
+        "completion_tokens_details": {
+          "reasoning_tokens": 58
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "completed_response_seconds": 0.9062820230001307
+    },
+    {
+      "name": "reasoning-max-False",
+      "passed": true,
+      "usage": {
+        "completion_tokens": 67,
+        "prompt_tokens": 33,
+        "total_tokens": 100,
+        "completion_tokens_details": {
+          "reasoning_tokens": 59
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "completed_response_seconds": 0.9140068049998717
+    },
+    {
+      "name": "reasoning-max-True",
+      "passed": true,
+      "first_meaningful_output_seconds": 0.8616988090000177,
+      "usage": {
+        "completion_tokens": 67,
+        "prompt_tokens": 33,
+        "total_tokens": 100,
+        "completion_tokens_details": {
+          "reasoning_tokens": 59
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "completed_response_seconds": 0.8839856960000816
+    },
+    {
+      "name": "json-False",
+      "passed": true,
+      "usage": {
+        "completion_tokens": 89,
+        "prompt_tokens": 33,
+        "total_tokens": 122,
+        "completion_tokens_details": {
+          "reasoning_tokens": 67
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "completed_response_seconds": 1.83219343199994
+    },
+    {
+      "name": "json-True",
+      "passed": true,
+      "first_meaningful_output_seconds": 0.9898131789998388,
+      "usage": {
+        "completion_tokens": 89,
+        "prompt_tokens": 33,
+        "total_tokens": 122,
+        "completion_tokens_details": {
+          "reasoning_tokens": 67
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "completed_response_seconds": 1.1785490279999067
+    },
+    {
+      "name": "auto-tool-stream",
+      "passed": true,
+      "first_meaningful_output_seconds": 0.9687494019999576,
+      "usage": {
+        "completion_tokens": 63,
+        "prompt_tokens": 145,
+        "total_tokens": 208,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": 128
+        }
+      },
+      "finish_reason": "tool_calls",
+      "completed_response_seconds": 1.2277198330000374
+    },
+    {
+      "name": "complete-assistant-tool-roundtrip",
+      "passed": true,
+      "usage": {
+        "completion_tokens": 44,
+        "prompt_tokens": 216,
+        "total_tokens": 260,
+        "completion_tokens_details": {
+          "reasoning_tokens": 33
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 128,
+          "created_cache_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "completed_response_seconds": 0.6340625280001859
+    },
+    {
+      "name": "image-quadrants-0.png",
+      "passed": true,
+      "usage": {
+        "completion_tokens": 127,
+        "prompt_tokens": 99,
+        "total_tokens": 226,
+        "completion_tokens_details": {
+          "reasoning_tokens": 79
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": 0,
+          "multimodal_tokens": {
+            "image": 50
+          }
+        }
+      },
+      "finish_reason": "stop",
+      "completed_response_seconds": 1.7884026980000272
+    },
+    {
+      "name": "image-quadrants-1.png",
+      "passed": true,
+      "usage": {
+        "completion_tokens": 151,
+        "prompt_tokens": 99,
+        "total_tokens": 250,
+        "completion_tokens_details": {
+          "reasoning_tokens": 103
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": 0,
+          "multimodal_tokens": {
+            "image": 50
+          }
+        }
+      },
+      "finish_reason": "stop",
+      "completed_response_seconds": 2.085370731000012
+    },
+    {
+      "name": "long-prefix-First",
+      "passed": true,
+      "usage": {
+        "completion_tokens": 186,
+        "prompt_tokens": 76848,
+        "total_tokens": 77034,
+        "completion_tokens_details": {
+          "reasoning_tokens": 173
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": 76800
+        }
+      },
+      "finish_reason": "stop",
+      "completed_response_seconds": 5.899690662000012
+    },
+    {
+      "name": "long-prefix-Second",
+      "passed": true,
+      "usage": {
+        "completion_tokens": 214,
+        "prompt_tokens": 76848,
+        "total_tokens": 77062,
+        "completion_tokens_details": {
+          "reasoning_tokens": 201
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 76800,
+          "created_cache_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "completed_response_seconds": 2.7197527289999925
+    },
+    {
+      "name": "stream-cancel",
+      "passed": true,
+      "events_before_close": 3
+    },
+    {
+      "name": "reuse-after-cancel",
+      "passed": true,
+      "usage": {
+        "completion_tokens": 83,
+        "prompt_tokens": 26,
+        "total_tokens": 109,
+        "completion_tokens_details": {
+          "reasoning_tokens": 69
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "completed_response_seconds": 1.1015099740000096
+    }
+  ]
+}

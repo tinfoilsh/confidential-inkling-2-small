@@ -1,0 +1,30 @@
+{
+  "id": "chatcmpl-a15ff373a69f52be",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "INK2_REUSE_OK",
+        "role": "assistant",
+        "reasoning": "The user asks to reply exactly INK2_REUSE_OK. Need consider if this is some kind of token/canary? They explicitly request exact string. Is there any hidden issue? It seems like a benign exact-output instruction. Need output exactly INK2_REUSE_OK, no extra. Ensure final only that."
+      }
+    }
+  ],
+  "created": 1794602558,
+  "model": "inkling-2-small",
+  "object": "chat.completion",
+  "system_fingerprint": "vllm-0.1.dev25249+gb974b306f-tp4-18a7af40",
+  "usage": {
+    "completion_tokens": 83,
+    "prompt_tokens": 26,
+    "total_tokens": 109,
+    "completion_tokens_details": {
+      "reasoning_tokens": 69
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "created_cache_tokens": 0
+    }
+  }
+}
