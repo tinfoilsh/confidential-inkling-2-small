@@ -12,8 +12,10 @@ for c in inkling-2-small $(docker ps --format '{{.Names}}' | grep -v toolbox); d
     case "$c" in *inkling*) CURRENT=$c; break;; esac
   fi
 done
-IMG=$(docker inspect inkling-2-small --format '{{.Config.Image}}')
-echo "current=$CURRENT image=$IMG"
+REF=$(docker ps -a --format '{{.Names}}' | grep inkling | head -1)
+IMG=$(docker inspect "$REF" --format '{{.Config.Image}}')
+docker inspect "$REF" --format '{{range .Config.Env}}{{println .}}{{end}}' | grep -v '^$' > /tmp/env.txt
+echo "current=$CURRENT ref=$REF image=$IMG"
 
 if [ -n "$CURRENT" ]; then
   echo "== graceful stop $CURRENT (60s)"
@@ -34,7 +36,6 @@ done
 echo "GPUs clear"
 
 echo "== starting $NEW (restart=no)"
-docker inspect inkling-2-small --format '{{range .Config.Env}}{{println .}}{{end}}' | grep -v '^$' > /tmp/env.txt
 ENVFLAGS=""
 while IFS= read -r e; do ENVFLAGS="$ENVFLAGS -e \"$e\""; done < /tmp/env.txt
 eval docker run -d --name "$NEW" \
