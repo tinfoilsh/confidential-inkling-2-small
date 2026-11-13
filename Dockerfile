@@ -16,4 +16,9 @@ FROM ${SIDECAR_IMAGE} AS sidecar
 FROM ${VLLM_BASE_IMAGE}
 
 COPY --from=sidecar /inference-sidecar /opt/tinfoil/inference-sidecar
+
+# Lab patches (see patches/ for rationale)
+COPY patches/apply-runai-local-ignore-patterns.py /opt/tinfoil/patches/
+RUN python3 /opt/tinfoil/patches/apply-runai-local-ignore-patterns.py
+
 ENTRYPOINT ["/opt/tinfoil/inference-sidecar", "vllm", "serve"]
