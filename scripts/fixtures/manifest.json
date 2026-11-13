@@ -1,0 +1,26 @@
+{
+  "generator": "Pillow 12.3.0",
+  "size": 256,
+  "cases": [
+    {
+      "file": "quadrants-0.png",
+      "sha256": "cff98abcc69a0a5b20e43a2c58fe78704c2b2fd341d56b7d3e2d8fe646beff26",
+      "expected": {
+        "top_left": "red",
+        "top_right": "blue",
+        "bottom_left": "green",
+        "bottom_right": "yellow"
+      }
+    },
+    {
+      "file": "quadrants-1.png",
+      "sha256": "3cd221666ed39986cfd49bbf22587aa38022d98851501b901e0fe83a62c0e3f4",
+      "expected": {
+        "top_left": "yellow",
+        "top_right": "green",
+        "bottom_left": "blue",
+        "bottom_right": "red"
+      }
+    }
+  ]
+}
