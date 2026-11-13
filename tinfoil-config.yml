@@ -6,10 +6,7 @@ gpus: 4
 models:
   - name: "inkling-2-small"
     repo: "thinkingmachines/Inkling-2-Small@aac974122acd33ddb0d3e1f54433a9c5dd2249ce"
-    # mpk pending: wrap job rbqpbebcvjybuvlx running on inf29 (schema 2).
-    # Replace with <root_hash>_<offset>_<verity_uuid> when the wrap completes,
-    # and update the --model path below to /tinfoil/mpk/mpk-<root_hash>.
-    mpk: "0000000000000000000000000000000000000000000000000000000000000000_0_00000000-0000-0000-0000-000000000000"
+    mpk: "2eb1ad6339674a38f3e9179c2933c16fc52f66d8e8b48047007665d4d48b477f_393510060032_f23b6b52-8871-5bbe-bebb-76f93b19a97d"
     schema: 2
 
 containers:
@@ -31,7 +28,7 @@ containers:
     command:
       [
         "--model",
-        "/tinfoil/mpk/mpk-0000000000000000000000000000000000000000000000000000000000000000",
+        "/tinfoil/mpk/mpk-2eb1ad6339674a38f3e9179c2933c16fc52f66d8e8b48047007665d4d48b477f",
         "--tensor-parallel-size",
         "4",
         "--max-model-len",
