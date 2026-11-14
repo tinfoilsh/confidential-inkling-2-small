@@ -1,0 +1,23 @@
+--- a/usr/local/lib/python3.12/dist-packages/vllm/model_executor/model_loader/runai_streamer_loader.py
++++ b/usr/local/lib/python3.12/dist-packages/vllm/model_executor/model_loader/runai_streamer_loader.py
+@@ -206,6 +206,20 @@
+             )
+         )
+         hf_weights_files = list_safetensors(path=hf_folder)
++        # tinfoil: upstream bug — ignore_patterns is only applied in the
++        # HF-download branch; local directories glob every *.safetensors, so
++        # checkpoints bundling loose draft weights (mtp.safetensors) crash
++        # target-only loads with "Unexpected checkpoint tensor". Retire when
++        # upstream filters local paths too (vllm model_loader/runai_streamer).
++        import fnmatch
++        import os as _os
++        _ig = self.load_config.ignore_patterns or []
++        if isinstance(_ig, str):
++            _ig = [_ig]
++        hf_weights_files = [
++            f for f in hf_weights_files
++            if not any(fnmatch.fnmatch(_os.path.basename(f), p) for p in _ig)
++        ]
+ 
+         if not is_local and not is_object_storage_path:
+             download_safetensors_index_file_from_hf(
