@@ -11,7 +11,7 @@ models:
 
 containers:
   - name: "inkling-2-small"
-    image: "ghcr.io/tinfoilsh/confidential-inkling-2-small@sha256:0000000000000000000000000000000000000000000000000000000000000000"
+    image: "ghcr.io/tinfoilsh/confidential-inkling-2-small@sha256:2b6e766799a5771e7a7739444cacb3aea01a01ebc601d577421f93e5fd2ac8e9" # v0.0.5
     runtime: nvidia
     gpus: all
     # Lab phase: writable rootfs for in-enclave iteration; remove before prod.
