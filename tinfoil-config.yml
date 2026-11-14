@@ -21,7 +21,6 @@ containers:
     env:
       - RUNAI_STREAMER_MEMORY_LIMIT: "17179869184"
       - RUNAI_STREAMER_CONCURRENCY: "8"
-      - VLLM_DISABLE_UVA: "1"
       - VLLM_ALLREDUCE_USE_SYMM_MEM: "0"
       - VLLM_ALLREDUCE_USE_FLASHINFER: "0"
       - FLASHINFER_NO_DOWNLOAD: "1"
@@ -54,7 +53,6 @@ containers:
         "runai_streamer",
         "--ignore-patterns",
         "mtp.safetensors",
-        "--disable-custom-all-reduce",
         "--no-enable-flashinfer-autotune",
         "--port",
         "8001",
