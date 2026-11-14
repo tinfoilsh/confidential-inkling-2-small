@@ -1,0 +1,6 @@
+{
+  "vllm": "0.1.dev25249+gb974b306f.cu130",
+  "torch": "2.14.0",
+  "flashinfer-python": "0.7.3",
+  "transformers": "5.22.2"
+}

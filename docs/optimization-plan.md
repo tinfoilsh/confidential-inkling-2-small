@@ -55,7 +55,7 @@ Engine: vLLM 0.1.dev25249+gb974b306f, TP4 B300, CC on, no speculation.
 | 2 | DSpark depth 5 (default loader) | blocked: depth must be 7 (block_size − 1) |
 | 3 | DSpark depth 7 (default loader) | blocked under CC: `assert is_multicast_supported` in draft buffer (ops/dspark.py:277); needs CC fallback (phase 4) |
 | 4 | UVA/transfer bundle recon | free: explicit CC mirrors/non-blocking H2D/metadata mirrors upstreamed (is_uva_available CC-aware, NonUvaBuffer); dirty-refresh absent but ~0.2%/step — optional micro-win |
-| 5 | enable custom all-reduce (card) | LEADING: 16/16 qual PASS; c1 +55% (124 tok/s, decode 133), c8 +25%, c16 +22%, c32 +17% (2499 out tok/s); natural oracle gate pending |
+| 5 | enable custom all-reduce (card) | LEADING: 16/16 qual PASS; c1 +55% (124 tok/s, decode 133), c8 +25%, c16 +22%, c32 +17% (2499 out tok/s); natural sweep complete — all oracles correct, c32 natural 1800 vs 1430 (+26%). ACCEPTED: card is the new control |
 
 ## Known platform quirks (report upstream / to infra)
 
