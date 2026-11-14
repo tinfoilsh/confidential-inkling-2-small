@@ -1,0 +1,30 @@
+{
+  "id": "chatcmpl-91110de7fcf8fa1c",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "714",
+        "role": "assistant",
+        "reasoning": "The user wants (37 * 19) + 11. 37*19 = 37*20 - 37 = 740 - 37 = 703. 703 + 11 = 714. Reply only with decimal integer."
+      }
+    }
+  ],
+  "created": 1794616090,
+  "model": "inkling-2-small",
+  "object": "chat.completion",
+  "system_fingerprint": "vllm-0.1.dev25249+gb974b306f-tp4-18a7af40",
+  "usage": {
+    "completion_tokens": 58,
+    "prompt_tokens": 33,
+    "total_tokens": 91,
+    "completion_tokens_details": {
+      "reasoning_tokens": 50
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "created_cache_tokens": 0
+    }
+  }
+}

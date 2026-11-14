@@ -1,0 +1,55 @@
+{
+  "model": "inkling-2-small",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "Identify the color in each quadrant. Return JSON with top_left, top_right, bottom_left and bottom_right, each a color name."
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAIAAADTED8xAAACyklEQVR4nO3VsRHAQAzDsHf239kZwwWBCdTwNLuPQ3M9IO67HgCXBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmAtHlvrzek7ZvrCWkegDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiDtByqDBf1nbxnVAAAAAElFTkSuQmCC"
+          }
+        }
+      ]
+    }
+  ],
+  "temperature": 0,
+  "seed": 20261113,
+  "max_tokens": 4096,
+  "stream": false,
+  "response_format": {
+    "type": "json_schema",
+    "json_schema": {
+      "name": "lab_result",
+      "strict": true,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "top_left": {
+            "type": "string"
+          },
+          "top_right": {
+            "type": "string"
+          },
+          "bottom_left": {
+            "type": "string"
+          },
+          "bottom_right": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "top_left",
+          "top_right",
+          "bottom_left",
+          "bottom_right"
+        ],
+        "additionalProperties": false
+      }
+    }
+  }
+}

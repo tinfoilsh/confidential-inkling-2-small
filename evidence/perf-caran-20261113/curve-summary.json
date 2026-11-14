@@ -1,0 +1,62 @@
+[
+  {
+    "point": "c1-r1",
+    "concurrency": 1,
+    "completed": 16,
+    "req_per_s": 0.48,
+    "output_tok_s": 123.7,
+    "total_tok_s": 625.8,
+    "ttft_ms_p50": 137.3,
+    "ttft_ms_p95": 161.3,
+    "tpot_ms_p50": 7.58,
+    "tpot_ms_p95": 7.68,
+    "decode_tok_s_p50": 131.9,
+    "decode_tok_s_p95_tail": 130.1,
+    "e2el_ms_p50": 2073.5
+  },
+  {
+    "point": "c16-r1",
+    "concurrency": 16,
+    "completed": 128,
+    "req_per_s": 4.66,
+    "output_tok_s": 1192.2,
+    "total_tok_s": 6030.7,
+    "ttft_ms_p50": 544.8,
+    "ttft_ms_p95": 573.5,
+    "tpot_ms_p50": 11.34,
+    "tpot_ms_p95": 11.79,
+    "decode_tok_s_p50": 88.2,
+    "decode_tok_s_p95_tail": 84.8,
+    "e2el_ms_p50": 3427.6
+  },
+  {
+    "point": "c32-r1",
+    "concurrency": 32,
+    "completed": 256,
+    "req_per_s": 9.58,
+    "output_tok_s": 2453.5,
+    "total_tok_s": 12411.1,
+    "ttft_ms_p50": 521.7,
+    "ttft_ms_p95": 858.4,
+    "tpot_ms_p50": 11.03,
+    "tpot_ms_p95": 11.83,
+    "decode_tok_s_p50": 90.6,
+    "decode_tok_s_p95_tail": 84.5,
+    "e2el_ms_p50": 3345.8
+  },
+  {
+    "point": "c8-r1",
+    "concurrency": 8,
+    "completed": 64,
+    "req_per_s": 2.74,
+    "output_tok_s": 700.5,
+    "total_tok_s": 3543.6,
+    "ttft_ms_p50": 390.6,
+    "ttft_ms_p95": 434.9,
+    "tpot_ms_p50": 9.92,
+    "tpot_ms_p95": 9.98,
+    "decode_tok_s_p50": 100.8,
+    "decode_tok_s_p95_tail": 100.2,
+    "e2el_ms_p50": 2917.3
+  }
+]

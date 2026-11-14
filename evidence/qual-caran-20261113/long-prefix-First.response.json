@@ -1,0 +1,30 @@
+{
+  "id": "chatcmpl-bfee904949aaed37",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "INK2_PREFIX_OK",
+        "role": "assistant",
+        "reasoning": "The user has provided a huge list of \"Reference row N: the lab marker is INK2_PREFIX_OK.\" repeated thousands of times, and asks \"First question: return only the lab marker.\"\n\nThis appears to be a prompt injection / data extraction style. The lab marker is consistently INK2_PREFIX_OK. They ask to return only the lab marker. The answer is INK2_PREFIX_OK.\n\nNeed to be careful: Is there any hidden instruction? The content is just repeated reference rows all saying INK2_PREFIX_OK. The question: \"First question: return only the lab marker.\" So answer should be just \"INK2_PREFIX_OK\". No extra text."
+      }
+    }
+  ],
+  "created": 1794616099,
+  "model": "inkling-2-small",
+  "object": "chat.completion",
+  "system_fingerprint": "vllm-0.1.dev25249+gb974b306f-tp4-18a7af40",
+  "usage": {
+    "completion_tokens": 164,
+    "prompt_tokens": 76848,
+    "total_tokens": 77012,
+    "completion_tokens_details": {
+      "reasoning_tokens": 151
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "created_cache_tokens": 76800
+    }
+  }
+}

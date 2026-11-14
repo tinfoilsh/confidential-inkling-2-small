@@ -1,0 +1,14 @@
+{
+  "model": "inkling-2-small",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Calculate (37 * 19) + 11. Reply only with the decimal integer."
+    }
+  ],
+  "temperature": 0,
+  "seed": 20261113,
+  "max_tokens": 4096,
+  "stream": false,
+  "reasoning_effort": "high"
+}
