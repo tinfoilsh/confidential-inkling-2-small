@@ -3,7 +3,7 @@
 # Usage: scripts/run-natural.sh <ssh-port> <variant> [run-name] [corpus]
 set -euo pipefail
 PORT=${1:?ssh port}
-VARIANT=${2:?dspark-off|dspark-1|dspark-3|dspark-5}
+VARIANT=${2:?variant label}
 RUN=${3:-natural-$VARIANT-$(date +%Y%m%d-%H%M%S)}
 CORPUS=${4:-mtp-natural-v1.jsonl}
 HERE=$(cd "$(dirname "$0")" && pwd)

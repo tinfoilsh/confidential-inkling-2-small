@@ -220,7 +220,7 @@ def main() -> int:
     parser.add_argument("--model", required=True)
     parser.add_argument("--tokenizer", required=True, help="Pinned local model-pack tokenizer path")
     parser.add_argument("--out-dir", required=True, type=Path, help="New output directory in this client's filesystem")
-    parser.add_argument("--variant", required=True, choices=("dspark-off", "dspark-1", "dspark-3", "dspark-5"), help="Label only; the operator must configure the server")
+    parser.add_argument("--variant", required=True, help="Label only; the operator must configure the server")
     parser.add_argument("--server-id", required=True, help="Recorded node and engine-image/revision identity")
     parser.add_argument("--cc-mode", required=True, choices=("on", "on-devtools", "off", "unknown"), help="Observed mode label; no mode changes are performed")
     parser.add_argument("--concurrencies", default=DEFAULT_CONCURRENCIES)
