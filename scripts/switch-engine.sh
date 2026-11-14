@@ -12,10 +12,12 @@ SPEC=""
 LOADFMT=""
 CAR="--disable-custom-all-reduce"
 AUTOTUNE="--no-enable-flashinfer-autotune"
+MBT=8192
 case "$MODE" in
   plain) SPEC="" ;;
   card) CAR="" ;;
   caran) CAR=""; AUTOTUNE="" ;;
+  mbt16) CAR=""; MBT=16384 ;;
   dspark1) SPEC="--speculative-config \"{\\\"method\\\":\\\"dspark\\\",\\\"num_speculative_tokens\\\":1}\"" ;;
   dspark3) SPEC="--speculative-config \"{\\\"method\\\":\\\"dspark\\\",\\\"num_speculative_tokens\\\":3}\"" ;;
   dspark5d) SPEC="--speculative-config \"{\\\"method\\\":\\\"dspark\\\",\\\"num_speculative_tokens\\\":5}\"" ;;
@@ -65,7 +67,7 @@ eval docker run -d --name "$NEW" \
   --entrypoint /opt/tinfoil/inference-sidecar "$IMG" vllm serve \
   --model /tinfoil/mpk/mpk-2eb1ad6339674a38f3e9179c2933c16fc52f66d8e8b48047007665d4d48b477f \
   --tensor-parallel-size 4 --max-model-len 524288 --max-num-seqs 64 \
-  --max-num-batched-tokens 8192 --reasoning-parser inkling --tool-call-parser inkling \
+  --max-num-batched-tokens $MBT --reasoning-parser inkling --tool-call-parser inkling \
   --enable-auto-tool-choice --enable-prompt-tokens-details --enable-force-include-usage \
   --served-model-name inkling-2-small --scheduling-policy priority \
   $LOADFMT $CAR \
