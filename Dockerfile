@@ -21,17 +21,24 @@ WORKDIR /hdr
 RUN pip3 download --no-deps --only-binary=:all: -d /hdr/wheels \
         nvidia-cusparse-cu12 nvidia-cusolver-cu12 nvidia-cufft-cu12 \
         nvidia-curand-cu12 nvidia-cublas-cu12 \
-    && for w in /hdr/wheels/*.whl; do unzip -qo "$w" 'nvidia/*/include/*' -d /hdr/x; done \
-    && mkdir -p /hdr/include \
-    && find /hdr/x -path '*/include/*' \( -name '*.h' -o -name '*.hpp' \) -exec cp {} /hdr/include/ \;
+    && python3 - <<'PYEOF'
+import glob, pathlib, zipfile
+out = pathlib.Path('/hdr/include'); out.mkdir(parents=True)
+for w in glob.glob('/hdr/wheels/*.whl'):
+    with zipfile.ZipFile(w) as z:
+        for n in z.namelist():
+            p = pathlib.PurePosixPath(n)
+            if '/include/' in n and p.suffix in ('.h', '.hpp'):
+                (out / p.name).write_bytes(z.read(n))
+PYEOF
 
 FROM ${VLLM_BASE_IMAGE}
 
 COPY --from=sidecar /inference-sidecar /opt/tinfoil/inference-sidecar
 
-# Lab patches (see patches/ for rationale)
-COPY patches/apply-runai-local-ignore-patterns.py /opt/tinfoil/patches/
-RUN python3 /opt/tinfoil/patches/apply-runai-local-ignore-patterns.py
+# vLLM patches (see patches/README.md), applied in filename order
+COPY patches/*.patch /opt/tinfoil/patches/
+RUN for p in /opt/tinfoil/patches/*.patch; do patch -p1 -d / --forward < "$p"; done
 
 # CUDA lib headers (globaltimer JIT) + pandas (in-enclave bench harness)
 COPY --from=cuda-headers /hdr/include/ /usr/local/cuda/include/
