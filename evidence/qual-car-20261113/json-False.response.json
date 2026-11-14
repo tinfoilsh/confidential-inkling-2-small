@@ -1,0 +1,30 @@
+{
+  "id": "chatcmpl-970e8a035b4617e2",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "{\"status\":\"ok\",\"count\":3}",
+        "role": "assistant",
+        "reasoning": "The user asks to return exactly a JSON string. Need output exactly that, no extra. Ensure final only contains {\"status\":\"ok\",\"count\":3}. No code fence."
+      }
+    }
+  ],
+  "created": 1794614294,
+  "model": "inkling-2-small",
+  "object": "chat.completion",
+  "system_fingerprint": "vllm-0.1.dev25249+gb974b306f-tp4-18a7af40",
+  "usage": {
+    "completion_tokens": 64,
+    "prompt_tokens": 33,
+    "total_tokens": 97,
+    "completion_tokens_details": {
+      "reasoning_tokens": 42
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "created_cache_tokens": 0
+    }
+  }
+}

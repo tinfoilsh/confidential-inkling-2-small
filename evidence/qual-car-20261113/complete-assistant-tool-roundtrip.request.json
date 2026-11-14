@@ -1,0 +1,57 @@
+{
+  "model": "inkling-2-small",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Use lookup_inventory to look up SKU INK2-LAB. Do not guess. After the tool result, reply exactly Inventory: followed by one space and the available count."
+    },
+    {
+      "content": "",
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "chatcmpl-tool-88a1a4f2d6614843",
+          "function": {
+            "arguments": "{\"sku\":\"INK2-LAB\"}",
+            "name": "lookup_inventory"
+          },
+          "type": "function",
+          "index": 0
+        }
+      ],
+      "reasoning": "The user wants me to look up SKU INK2-LAB using the lookup_inventory tool. Let me call it."
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "chatcmpl-tool-88a1a4f2d6614843",
+      "content": "{\"available\": 17}"
+    }
+  ],
+  "temperature": 0,
+  "seed": 20261113,
+  "max_tokens": 4096,
+  "stream": false,
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "lookup_inventory",
+        "description": "Look up inventory for a SKU.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "sku": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "sku"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  ],
+  "tool_choice": "none",
+  "parallel_tool_calls": false
+}

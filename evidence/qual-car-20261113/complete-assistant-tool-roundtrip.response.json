@@ -1,0 +1,30 @@
+{
+  "id": "chatcmpl-9fc43b837030e933",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "Inventory: 17",
+        "role": "assistant",
+        "reasoning": "The tool returned available: 17. The user wants exactly \"Inventory: \" followed by one space and the available count. So \"Inventory: 17\"."
+      }
+    }
+  ],
+  "created": 1794614297,
+  "model": "inkling-2-small",
+  "object": "chat.completion",
+  "system_fingerprint": "vllm-0.1.dev25249+gb974b306f-tp4-18a7af40",
+  "usage": {
+    "completion_tokens": 44,
+    "prompt_tokens": 217,
+    "total_tokens": 261,
+    "completion_tokens_details": {
+      "reasoning_tokens": 33
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 128,
+      "created_cache_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "chatcmpl-b2c553ed56d55831",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "message": {
+        "content": "",
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "id": "chatcmpl-tool-88a1a4f2d6614843",
+            "function": {
+              "arguments": "{\"sku\":\"INK2-LAB\"}",
+              "name": "lookup_inventory"
+            },
+            "type": "function",
+            "index": 0
+          }
+        ],
+        "reasoning": "The user wants me to look up SKU INK2-LAB using the lookup_inventory tool. Let me call it."
+      }
+    }
+  ],
+  "created": 1794614296,
+  "model": "inkling-2-small",
+  "object": "chat.completion",
+  "system_fingerprint": "vllm-0.1.dev25249+gb974b306f-tp4-18a7af40",
+  "usage": {
+    "completion_tokens": 64,
+    "prompt_tokens": 145,
+    "total_tokens": 209,
+    "completion_tokens_details": {
+      "reasoning_tokens": 26
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "created_cache_tokens": 128
+    }
+  }
+}
