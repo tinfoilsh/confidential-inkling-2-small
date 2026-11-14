@@ -58,6 +58,7 @@ Engine: vLLM 0.1.dev25249+gb974b306f, TP4 B300, CC on, no speculation.
 | 5 | enable custom all-reduce (card) | LEADING: 16/16 qual PASS; c1 +55% (124 tok/s, decode 133), c8 +25%, c16 +22%, c32 +17% (2499 out tok/s); natural sweep complete — all oracles correct, c32 natural 1800 vs 1430 (+26%). ACCEPTED: card is the new control |
 | 6 | globaltimer repair (cusparse/cusolver/cufft/curand/cublas headers into /usr/local/cuda/include) | WORKS: flashinfer_globaltimer.so builds, CC-reliable timing; keep headers in future image |
 | 7 | flashinfer autotune ON (repaired timer, caran) | REJECT: 16/16 qual but flat c1-c16, c32 −1.8% vs card; autotune stays off |
+| 8 | max-num-batched-tokens 16384 (mbt16) | REJECT/incident: engine hung before EngineCore init (no CUDA logs, 30 min); guest dockerd then wedged → CVM recovery. Matches negative prior (deepseek 113/117). Quirk: wedge occurred even though the preceding swap chain was graceful |
 
 ## Known platform quirks (report upstream / to infra)
 
