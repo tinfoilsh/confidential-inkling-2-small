@@ -11,9 +11,11 @@ SPEC=""
 # crashes on local checkpoints with loose mtp.safetensors (ledger #1).
 LOADFMT=""
 CAR="--disable-custom-all-reduce"
+AUTOTUNE="--no-enable-flashinfer-autotune"
 case "$MODE" in
   plain) SPEC="" ;;
   card) CAR="" ;;
+  caran) CAR=""; AUTOTUNE="" ;;
   dspark1) SPEC="--speculative-config \"{\\\"method\\\":\\\"dspark\\\",\\\"num_speculative_tokens\\\":1}\"" ;;
   dspark3) SPEC="--speculative-config \"{\\\"method\\\":\\\"dspark\\\",\\\"num_speculative_tokens\\\":3}\"" ;;
   dspark5d) SPEC="--speculative-config \"{\\\"method\\\":\\\"dspark\\\",\\\"num_speculative_tokens\\\":5}\"" ;;
@@ -67,5 +69,5 @@ eval docker run -d --name "$NEW" \
   --enable-auto-tool-choice --enable-prompt-tokens-details --enable-force-include-usage \
   --served-model-name inkling-2-small --scheduling-policy priority \
   $LOADFMT $CAR \
-  --no-enable-flashinfer-autotune --port 8001 $SPEC
+  $AUTOTUNE --port 8001 $SPEC
 echo "started $NEW"
